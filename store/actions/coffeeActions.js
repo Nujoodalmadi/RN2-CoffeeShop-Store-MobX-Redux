@@ -3,14 +3,18 @@ import axios from "axios";
 
 export const getCoffeeShops = () => {
   return async dispatch => {
-    const response = await axios.get(
-      "http://coffee.q8fawazo.me/api/?format=json"
-    );
-    const coffeeShops = response.data;
-    dispatch({
-      type: actionTypes.GET_COFFEESHOPS,
-      payload: coffeeShops
-    });
+    try {
+      const response = await axios.get(
+        "http://coffee.q8fawazo.me/api/?format=json"
+      );
+      const coffeeShops = response.data;
+      dispatch({
+        type: actionTypes.GET_COFFEESHOPS,
+        payload: coffeeShops
+      });
+    } catch (error) {
+      console.error("something went wrong", error);
+    }
   };
 };
 

@@ -40,7 +40,7 @@ class CoffeeDetail extends Component {
   };
 
   render() {
-    if (!this.props.coffeeShops) return <Content />;
+    if (this.props.loading) return <Content />;
     const coffeeshop = this.props.coffeeShops[0];
     return (
       <Content>
@@ -96,7 +96,8 @@ class CoffeeDetail extends Component {
 
 const mapStateToProps = state => {
   return {
-    coffeeShops: state.coffeeShops.coffeeShops
+    coffeeShops: state.coffeeShops.coffeeShops,
+    loading: state.coffeeShops.loading
   };
 };
 

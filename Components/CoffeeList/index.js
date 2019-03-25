@@ -13,11 +13,12 @@ import CoffeeItem from "./CoffeeItem";
 class CoffeeList extends Component {
   render() {
     let shops;
-    if (this.props.coffeeShops) {
-      shops = this.props.coffeeShops.map(coffeeShop => (
-        <CoffeeItem coffeeShop={coffeeShop} key={coffeeShop.id} />
-      ));
-    }
+    if (this.props.loading)
+      if (this.props.coffeeShops) {
+        shops = this.props.coffeeShops.map(coffeeShop => (
+          <CoffeeItem coffeeShop={coffeeShop} key={coffeeShop.id} />
+        ));
+      }
     return (
       <Content>
         <List>{shops}</List>
@@ -28,7 +29,8 @@ class CoffeeList extends Component {
 
 const mapStateToProps = state => {
   return {
-    coffeeShops: state.coffeeShops.coffeeShops
+    coffeeShops: state.coffeeShops.coffeeShops,
+    coffeeShops: state.coffeeShops.loading
   };
 };
 
